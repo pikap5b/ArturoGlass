@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Vision from './components/Vision';
 import Services from './components/Services';
+import ServicesPage from './components/ServicesPage';
 import HowWeWork from './components/HowWeWork';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
@@ -18,12 +19,12 @@ function App() {
           <>
             <Hero />
             <Vision />
-            <Services />
+            <Services onNavigate={setCurrentPage} />
             <HowWeWork />
           </>
         );
       case 'services':
-        return <Services />;
+        return <ServicesPage />;
       case 'portfolio':
         return <Portfolio />;
       case 'contact':
