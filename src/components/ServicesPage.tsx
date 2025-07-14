@@ -1,58 +1,60 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import ImageModal from './ImageModal';
 
 const ServicesPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const { t } = useLanguage();
 
   const services = [
     {
-      title: 'Glass Staircases',
-      description: 'Transform your space with our elegant glass staircases that combine modern aesthetics with structural integrity. Our expert craftsmen create stunning focal points that allow light to flow freely throughout your home or office, making spaces feel larger and more open. Each staircase is custom-designed to meet your specific requirements while adhering to the highest safety standards.',
+      title: t('servicesPage.services.glassStaircases.title'),
+      description: t('servicesPage.services.glassStaircases.description'),
       image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Curved Glass Staircases',
-      description: 'Experience the pinnacle of architectural artistry with our curved glass staircases. These sophisticated installations serve as breathtaking centerpieces that seamlessly blend form and function. Our skilled team specializes in creating smooth, flowing curves that challenge traditional design boundaries while maintaining the highest levels of safety and durability.',
+      title: t('servicesPage.services.curvedGlassStaircases.title'),
+      description: t('servicesPage.services.curvedGlassStaircases.description'),
       image: 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Sliding Glass Doors',
-      description: 'Maximize your connection to the outdoors with our premium sliding glass door systems. These installations create seamless transitions between indoor and outdoor living spaces while flooding your interior with natural light. Our doors feature advanced weatherproofing, energy-efficient glass, and smooth operation mechanisms for years of reliable performance.',
+      title: t('servicesPage.services.slidingGlassDoors.title'),
+      description: t('servicesPage.services.slidingGlassDoors.description'),
       image: 'https://images.pexels.com/photos/1571457/pexels-photo-1571457.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Office Glazing',
-      description: 'Enhance your workplace environment with our professional office glazing solutions. We create modern, productive spaces that balance openness with privacy, using high-quality glass partitions and windows that provide sound control and visual appeal. Our installations help create collaborative environments while maintaining professional aesthetics.',
+      title: t('servicesPage.services.officeGlazing.title'),
+      description: t('servicesPage.services.officeGlazing.description'),
       image: 'https://images.pexels.com/photos/1571446/pexels-photo-1571446.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Glass Ceilings',
-      description: 'Revolutionize your space with our innovative glass ceiling installations that bring the sky indoors. These dramatic architectural features flood interiors with natural light while creating stunning visual impact. Our glass ceilings are engineered for safety and weather resistance, perfect for atriums, conservatories, and modern architectural designs.',
+      title: t('servicesPage.services.glassCeilings.title'),
+      description: t('servicesPage.services.glassCeilings.description'),
       image: 'https://images.pexels.com/photos/1571448/pexels-photo-1571448.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Curved Balcony Glass',
-      description: 'Enjoy unobstructed panoramic views with our custom curved balcony glass installations. These sophisticated systems provide essential safety barriers while maintaining visual continuity with your surroundings. Our curved glass solutions are engineered to withstand weather extremes while offering crystal-clear visibility and modern aesthetic appeal.',
+      title: t('servicesPage.services.curvedBalconyGlass.title'),
+      description: t('servicesPage.services.curvedBalconyGlass.description'),
       image: 'https://images.pexels.com/photos/1571451/pexels-photo-1571451.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Glass Doors',
-      description: 'Make a lasting impression with our premium glass door solutions designed for both residential and commercial applications. Our doors combine style, security, and energy efficiency, featuring tempered safety glass and robust hardware systems. From entrance doors to interior partitions, we create solutions that enhance your space\'s functionality and appeal.',
+      title: t('servicesPage.services.glassDoors.title'),
+      description: t('servicesPage.services.glassDoors.description'),
       image: 'https://images.pexels.com/photos/1571454/pexels-photo-1571454.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Mirrors',
-      description: 'Expand your space and enhance lighting with our custom mirror installations. From decorative accent pieces to functional wall mirrors and architectural mirror systems, we create solutions that transform interiors. Our mirrors are crafted from high-quality materials with precision cutting and professional installation for lasting beauty and functionality.',
+      title: t('servicesPage.services.mirrors.title'),
+      description: t('servicesPage.services.mirrors.description'),
       image: 'https://images.pexels.com/photos/1571455/pexels-photo-1571455.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Glass Shower Enclosures',
-      description: 'Transform your bathroom into a luxurious spa-like retreat with our custom glass shower enclosures. These installations feature seamless, easy-to-clean surfaces that resist water spots and soap buildup. Our enclosures are available in various configurations and glass types, all designed to provide years of beautiful, functional service.',
+      title: t('servicesPage.services.glassShowerEnclosures.title'),
+      description: t('servicesPage.services.glassShowerEnclosures.description'),
       image: 'https://images.pexels.com/photos/1571456/pexels-photo-1571456.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
     {
-      title: 'Fixed Glazing',
-      description: 'Achieve optimal insulation and visual appeal with our fixed glazing solutions for windows, facades, and architectural features. These permanent installations provide excellent thermal performance while creating clean, modern aesthetics. Our fixed glazing systems are engineered for longevity and weather resistance in any climate condition.',
+      title: t('servicesPage.services.fixedGlazing.title'),
+      description: t('servicesPage.services.fixedGlazing.description'),
       image: 'https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1',
     },
   ];
@@ -70,8 +72,8 @@ const ServicesPage: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600">Professional glass solutions for every need</p>
+            <h2 className="text-4xl font-bold text-black mb-4">{t('servicesPage.title')}</h2>
+            <p className="text-xl text-gray-600">{t('servicesPage.subtitle')}</p>
           </div>
 
           <div className="space-y-16">
@@ -98,7 +100,7 @@ const ServicesPage: React.FC = () => {
                   <h3 className="text-3xl font-bold text-black">{service.title}</h3>
                   <p className="text-gray-600 leading-relaxed text-lg">{service.description}</p>
                   <button className="bg-[#01ccff] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#00b8e6] transition-colors duration-200">
-                    Request Quote
+                    {t('servicesPage.requestQuote')}
                   </button>
                 </div>
               </div>

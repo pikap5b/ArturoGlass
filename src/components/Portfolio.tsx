@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Eye } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import ImageModal from './ImageModal';
 
 const Portfolio: React.FC = () => {
   const { t } = useLanguage();
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
   const projects = [
     {
@@ -48,44 +50,68 @@ const Portfolio: React.FC = () => {
     },
   ];
 
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-black mb-4">{t('portfolio.title')}</h2>
-          <p className="text-xl text-gray-600">{t('portfolio.subtitle')}</p>
-        </div>
+  const handleImageClick = (imageSrc: string, title: string) => {
+    console.log('Image clicked:', imageSrc, title); // Debug log
+    setSelectedImage({ src: imageSrc, alt: title });
+  };
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="aspect-w-16 aspect-h-12 relative">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Eye size={32} className="text-white" />
+  const closeModal = () => {
+    console.log('Closing modal'); // Debug log
+    setSelectedImage(null);
+  };
+
+  return (
+    <>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-black mb-4">{t('portfolio.title')}</h2>
+            <p className="text-xl text-gray-600">{t('portfolio.subtitle')}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="aspect-w-16 aspect-h-12 relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                    onClick={() => handleImageClick(project.image, project.title)}
+                    style={{ pointerEvents: 'auto' }}
+                  />
+                  <div 
+                    className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center cursor-pointer"
+                    onClick={() => handleImageClick(project.image, project.title)}
+                  >
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Eye size={32} className="text-white" />
+                    </div>
                   </div>
                 </div>
+                
+                <div className="p-6 bg-white">
+                  <span className="inline-block px-3 py-1 bg-[#01ccff] text-white text-sm font-medium rounded-full mb-2">
+                    {project.category}
+                  </span>
+                  <h3 className="text-lg font-semibold text-black">{project.title}</h3>
+                </div>
               </div>
-              
-              <div className="p-6 bg-white">
-                <span className="inline-block px-3 py-1 bg-[#01ccff] text-white text-sm font-medium rounded-full mb-2">
-                  {project.category}
-                </span>
-                <h3 className="text-lg font-semibold text-black">{project.title}</h3>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <ImageModal
+        isOpen={selectedImage !== null}
+        onClose={closeModal}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+      />
+    </>
   );
 };
 
