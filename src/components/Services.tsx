@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import ImageModal from './ImageModal';
 
 interface ServicesProps {
@@ -7,6 +8,7 @@ interface ServicesProps {
 
 const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const { t } = useLanguage();
 
   const services = [
     {
@@ -80,8 +82,8 @@ const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600">Professional glass solutions for every need</p>
+            <h2 className="text-4xl font-bold text-black mb-4">{t('services.title')}</h2>
+            <p className="text-xl text-gray-600">{t('services.subtitle')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -113,7 +115,7 @@ const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
                 onClick={handleGoToServices}
                 className="bg-[#01ccff] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#00b8e6] transition-colors duration-200 transform hover:scale-105"
               >
-                Go to Services
+                {t('services.viewAll')}
               </button>
             </div>
           )}

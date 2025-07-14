@@ -1,7 +1,10 @@
 import React from 'react';
 import { Eye } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Portfolio: React.FC = () => {
+  const { t } = useLanguage();
+
   const projects = [
     {
       title: 'Modern Glass Staircase',
@@ -49,8 +52,8 @@ const Portfolio: React.FC = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-black mb-4">Our Portfolio</h2>
-          <p className="text-xl text-gray-600">Showcasing our finest glass installations and craftsmanship</p>
+          <h2 className="text-4xl font-bold text-black mb-4">{t('portfolio.title')}</h2>
+          <p className="text-xl text-gray-600">{t('portfolio.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

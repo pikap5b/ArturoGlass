@@ -1,22 +1,25 @@
 import React from 'react';
 import { Target, Users, Cog } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const HowWeWork: React.FC = () => {
+  const { t } = useLanguage();
+
   const principles = [
     {
       icon: Target,
-      title: 'Perfect Planning',
-      description: 'Every project begins with meticulous planning and detailed consultation to ensure your vision is perfectly executed.',
+      title: t('howWeWork.steps.consultation.title'),
+      description: t('howWeWork.steps.consultation.description'),
     },
     {
       icon: Users,
-      title: 'Professional Workers',
-      description: 'Our skilled craftsmen bring years of experience and expertise to every installation, ensuring quality results.',
+      title: t('howWeWork.steps.design.title'),
+      description: t('howWeWork.steps.design.description'),
     },
     {
       icon: Cog,
-      title: 'First Working Process',
-      description: 'We follow a systematic approach that prioritizes efficiency, safety, and superior craftsmanship in every step.',
+      title: t('howWeWork.steps.installation.title'),
+      description: t('howWeWork.steps.installation.description'),
     },
   ];
 
@@ -25,10 +28,10 @@ const HowWeWork: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-black mb-8">
-            HOW WE WORK
+            {t('howWeWork.title')}
           </h2>
           <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            At ArturoGlass, we pride ourselves on delivering exceptional service and top-quality custom glass installations. Here's why we stand out:
+            {t('howWeWork.subtitle')}
           </p>
         </div>
 

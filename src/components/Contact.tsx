@@ -1,26 +1,29 @@
 import React from 'react';
 import { Phone, Mail, Instagram, Facebook, MapPin, Clock } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
+
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Phone',
+      title: t('contact.info.phone'),
       details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
     },
     {
       icon: Mail,
-      title: 'Email',
+      title: t('contact.info.email'),
       details: ['info@arturoglass.com', 'quotes@arturoglass.com'],
     },
     {
       icon: MapPin,
-      title: 'Address',
+      title: t('contact.info.address'),
       details: ['123 Glass Street', 'Professional District, City 12345'],
     },
     {
       icon: Clock,
-      title: 'Hours',
+      title: t('contact.info.hours'),
       details: ['Mon-Fri: 8:00 AM - 6:00 PM', 'Sat: 9:00 AM - 4:00 PM'],
     },
   ];
@@ -29,8 +32,8 @@ const Contact: React.FC = () => {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-black mb-4">Get In Touch</h2>
-          <p className="text-xl text-gray-600">Ready to bring your glass vision to life? Contact us today</p>
+          <h2 className="text-4xl font-bold text-black mb-4">{t('contact.title')}</h2>
+          <p className="text-xl text-gray-600">{t('contact.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -100,7 +103,7 @@ const Contact: React.FC = () => {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -112,7 +115,7 @@ const Contact: React.FC = () => {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone
+                  {t('contact.form.phone')}
                 </label>
                 <input
                   type="tel"
@@ -146,7 +149,7 @@ const Contact: React.FC = () => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   id="message"
@@ -160,7 +163,7 @@ const Contact: React.FC = () => {
                 type="submit"
                 className="w-full bg-[#01ccff] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#00b8e6] transition-colors duration-200"
               >
-                Send Message
+                {t('contact.form.send')}
               </button>
             </form>
           </div>

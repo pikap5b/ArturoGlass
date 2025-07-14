@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -16,13 +19,13 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          ArturoGlass Services
+          {t('hero.title')}
         </h1>
         <p className="text-xl md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed">
-          Your Glass Experts: From Window Installation to Exclusive Mirrors
+          {t('hero.subtitle')}
         </p>
         <button className="mt-12 bg-[#01ccff] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#00b8e6] transition-colors duration-200 transform hover:scale-105">
-          Explore Our Services
+          {t('hero.cta')}
         </button>
       </div>
 

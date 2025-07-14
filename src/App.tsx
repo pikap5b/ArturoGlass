@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Vision from './components/Vision';
@@ -42,13 +43,15 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <main>
-        {renderPage()}
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-white">
+        <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <main>
+          {renderPage()}
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

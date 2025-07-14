@@ -1,5 +1,7 @@
 import React from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 interface HeaderProps {
   currentPage: string;
@@ -8,12 +10,13 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { t } = useLanguage();
 
   const navigationItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: t('nav.home') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'portfolio', label: t('nav.portfolio') },
+    { id: 'contact', label: t('nav.contact') },
   ];
 
   const handleNavClick = (pageId: string) => {
@@ -52,19 +55,21 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             ))}
           </nav>
 
-          {/* Ask Button */}
-          <div className="hidden md:flex">
+          {/* Language Switcher and Ask Button */}
+          <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
             <button
               onClick={() => handleNavClick('contact')}
               className="bg-[#01ccff] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#00b8e6] transition-colors duration-200 flex items-center space-x-2"
             >
               <Phone size={16} />
-              <span>Ask</span>
+              <span>{t('nav.ask')}</span>
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-black hover:text-[#01ccff] transition-colors duration-200"
@@ -96,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 className="w-full bg-[#01ccff] text-white px-3 py-2 rounded-lg font-medium hover:bg-[#00b8e6] transition-colors duration-200 flex items-center justify-center space-x-2 mt-4"
               >
                 <Phone size={16} />
-                <span>Ask</span>
+                <span>{t('nav.ask')}</span>
               </button>
             </div>
           </div>
